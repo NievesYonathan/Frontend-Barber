@@ -32,7 +32,7 @@ const Register = () => {
       await axios.post(`${API}/usuarios`, formData);
       navigate('/login');
     } catch (err) {
-      setError(err.response?.data?.message || 'Error al registrarse');
+      setError(err.response?.data?.message || '¡Error al registrarse!');
     }
   };
 
