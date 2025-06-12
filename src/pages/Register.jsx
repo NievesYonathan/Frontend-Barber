@@ -25,6 +25,17 @@ const Register = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
+  //   try {
+  //     await axios.post(`${API}/usuarios`, formData);
+  //     navigate('/login');
+  //   } catch (err) {
+  //     setError(err.response?.data?.message || '¡Error al registrarse!');
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -32,6 +43,7 @@ const Register = () => {
       await axios.post(`${API}/usuarios`, formData);
       navigate('/login');
     } catch (err) {
+      console.log('Error completo:', err); // 👈 Mira esto en consola
       setError(err.response?.data?.message || '¡Error al registrarse!');
     }
   };
