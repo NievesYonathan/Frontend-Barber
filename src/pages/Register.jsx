@@ -40,7 +40,7 @@ const Register = () => {
     e.preventDefault();
     setError('');
     try {
-      await axios.post(`${API}/usuarios`, formData);
+      await axios.post('https://barberback.azurewebsites.net/api/usuarios', formData);
       navigate('/login');
     } catch (err) {
       console.log('Error completo:', err); // 👈 Mira esto en consola
