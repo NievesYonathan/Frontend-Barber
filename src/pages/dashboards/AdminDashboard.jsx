@@ -102,7 +102,7 @@ const AdminDashboard = () => {
 
   const handleDownloadCitasPDF = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/cita/estadisticas/pdf', {
+      const response = await axios.get('https://barberback.azurewebsites.net/api/cita/estadisticas/pdf', {
         responseType: 'blob',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
 
   const handleDownloadRecibosPDF = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/recibos/pdf', {
+      const response = await axios.get('https://barberback.azurewebsites.net/api/recibos/pdf', {
         responseType: 'blob',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

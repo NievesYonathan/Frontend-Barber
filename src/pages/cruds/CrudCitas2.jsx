@@ -21,7 +21,7 @@ const CrudCitas2 = () => {
   }, []);
 
   const fetchCitas = async () => {
-    const response = await axios.get('http://localhost:8000/api/cita');
+    const response = await axios.get('https://barberback.azurewebsites.net/api/cita');
     setCitas(response.data);
   };
 
@@ -32,10 +32,10 @@ const CrudCitas2 = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (editId) {
-      await axios.put(`http://localhost:8000/api/cita/${editId}`, formData);
+      await axios.put(`https://barberback.azurewebsites.net/api/cita/${editId}`, formData);
       setEditId(null);
     } else {
-      await axios.post('http://localhost:8000/api/cita', formData);
+      await axios.post('https://barberback.azurewebsites.net/api/cita', formData);
     }
     fetchCitas();
     setFormData({ nombre: '', celular: '', correo: '', fecha: '', hora: '' });
@@ -53,7 +53,7 @@ const CrudCitas2 = () => {
   };
 
   const handleDelete = async id => {
-    await axios.delete(`http://localhost:8000/api/cita/${id}`);
+    await axios.delete(`https://barberback.azurewebsites.net/api/cita/${id}`);
     fetchCitas();
   };
 

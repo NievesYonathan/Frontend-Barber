@@ -6,7 +6,7 @@ import logo from '../../assets/images/logo.png';
 // import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const API = 'https://barberback.azurewebsites.net/';
+const API = 'https://barberback.azurewebsites.net/api';
 
 const CrudUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);

@@ -15,7 +15,7 @@ const BarberoDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/citas/estadisticas')
+    axios.get('https://barberback.azurewebsites.net/api/citas/estadisticas')
       .then(response => setStats(response.data))
       .catch(error => console.error('Error al obtener estadísticas:', error));
   }, []);
@@ -23,7 +23,7 @@ const BarberoDashboard = () => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8000/api/logout', {}, {
+      await axios.post('https://barberback.azurewebsites.net/api/logout', {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem('token');
@@ -47,7 +47,7 @@ const BarberoDashboard = () => {
 
   const handleDownloadPDF = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/citas/pdf', {
+      const response = await axios.get('https://barberback.azurewebsites.net/api/citas/pdf', {
         responseType: 'blob',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
