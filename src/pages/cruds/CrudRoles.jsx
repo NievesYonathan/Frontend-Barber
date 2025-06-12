@@ -5,7 +5,7 @@ import '../../assets/css/AdminDashboard.css';
 import logo from '../../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
-const API = process.env.REACT_APP_API_URL; 
+const API = 'https://barberback.azurewebsites.net/';
 
 const CrudRoles = () => {
   const [roles, setRoles] = useState([]);
