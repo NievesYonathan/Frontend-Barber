@@ -5,6 +5,8 @@ import '../../assets/css/AdminDashboard.css';
 import logo from '../../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
+const API = process.env.REACT_APP_API_URL; 
+
 const CrudRoles = () => {
   const [roles, setRoles] = useState([]);
   const [formData, setFormData] = useState({ nombre_rol: '' });
@@ -15,7 +17,7 @@ const CrudRoles = () => {
   }, []);
 
   const fetchRoles = async () => {
-    const response = await axios.get('http://localhost:8000/api/roles');
+    const response = await axios.get(`${API}/roles`);
     setRoles(response.data);
   };
 
@@ -26,10 +28,10 @@ const CrudRoles = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (editId) {
-      await axios.put(`http://localhost:8000/api/roles/${editId}`, formData);
+      await axios.put(`${API}/roles/${editId}`, formData);
       setEditId(null);
     } else {
-      await axios.post('http://localhost:8000/api/roles', formData);
+      await axios.post(`${API}/roles`, formData);
     }
     fetchRoles();
     setFormData({ nombre_rol: '' });
@@ -41,7 +43,7 @@ const CrudRoles = () => {
   };
 
   const handleDelete = async id => {
-    await axios.delete(`http://localhost:8000/api/roles/${id}`);
+    await axios.delete(`${API}/roles/${id}`);
     fetchRoles();
   };
 

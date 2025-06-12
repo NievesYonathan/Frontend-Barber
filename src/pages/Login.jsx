@@ -4,6 +4,8 @@ import '../assets/css/Login.css';
 import logo from '../assets/images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 
+const API = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +15,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/login', {
+      const response = await axios.post(`${API}/login`, {
         Correo: email,
         Pass: password
       });

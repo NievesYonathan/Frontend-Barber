@@ -9,6 +9,8 @@ import { FaBars } from 'react-icons/fa';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+const API = process.env.REACT_APP_API_URL;
+
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
   const [citaStats, setCitaStats] = useState(null);
@@ -17,15 +19,15 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/productos/estadisticas')
+    axios.get(`${API}/productos/estadisticas`)
       .then(response => setStats(response.data))
       .catch(error => console.error('Error al obtener estadísticas de productos:', error));
 
-    axios.get('http://localhost:8000/api/cita/estadisticas')
+    axios.get(`${API}/cita/estadisticas`)
       .then(response => setCitaStats(response.data))
       .catch(error => console.error('Error al obtener estadísticas de citas:', error));
 
-    axios.get('http://localhost:8000/api/recibos/estadisticas')
+    axios.get(`${API}/recibos/estadisticas`)
       .then(response => setReciboStats(response.data))
       .catch(error => console.error('Error al obtener estadísticas de recibos:', error));
   }, []);
@@ -33,7 +35,7 @@ const AdminDashboard = () => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8000/api/logout', {}, {
+      await axios.post(`${API}/logout`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem('token');

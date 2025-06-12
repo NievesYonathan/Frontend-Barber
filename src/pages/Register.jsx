@@ -4,6 +4,8 @@ import logo from '../assets/images/logo.png';
 import { useNavigate, Link } from 'react-router-dom';
 import '../assets/css/AuthForm.css';
 
+const API = process.env.REACT_APP_API_URL;
+
 const Register = () => {
   const [formData, setFormData] = useState({
     Nombre: '',
@@ -27,7 +29,7 @@ const Register = () => {
     e.preventDefault();
     setError('');
     try {
-      await axios.post('http://localhost:8000/api/usuarios', formData);
+      await axios.post(`${API}/usuarios`, formData);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Error al registrarse');

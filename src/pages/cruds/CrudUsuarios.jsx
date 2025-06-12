@@ -3,8 +3,10 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/AdminDashboard.css';
 import logo from '../../assets/images/logo.png';
-import { FaBars } from 'react-icons/fa';
+// import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+const API = process.env.REACT_APP_API_URL;
 
 const CrudUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -24,7 +26,7 @@ const CrudUsuarios = () => {
   }, []);
 
   const fetchUsuarios = async () => {
-    const response = await axios.get('http://localhost:8000/api/usuarios');
+    const response = await axios.get(`${API}/usuarios`);
     setUsuarios(response.data);
   };
 
@@ -36,10 +38,10 @@ const CrudUsuarios = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (editId) {
-      await axios.put(`http://localhost:8000/api/usuarios/${editId}`, formData);
+      await axios.put(`${API}/usuarios/${editId}`, formData);
       setEditId(null);
     } else {
-      await axios.post('http://localhost:8000/api/usuarios', formData);
+      await axios.post(`${API}/usuarios`, formData);
     }
     fetchUsuarios();
     setFormData({ Nombre: '', P_apellido: '', S_apellido: '', Pass: '', Correo: '', id_roles: '', userState: true });
@@ -59,7 +61,7 @@ const CrudUsuarios = () => {
   };
 
   const handleDelete = async id => {
-    await axios.delete(`http://localhost:8000/api/usuarios/${id}`);
+    await axios.delete(`${API}/usuarios/${id}`);
     fetchUsuarios();
   };
 
