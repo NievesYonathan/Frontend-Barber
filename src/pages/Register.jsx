@@ -4,7 +4,7 @@ import logo from '../assets/images/logo.png';
 import { useNavigate, Link } from 'react-router-dom';
 import '../assets/css/AuthForm.css';
 
-const API = 'https://barberback.azurewebsites.net/';
+const API = 'https://barberback.azurewebsites.net/api';
 
 const Register = () => {
   const [formData, setFormData] = useState({

@@ -9,7 +9,7 @@ import { FaBars } from 'react-icons/fa';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const API = 'https://barberback.azurewebsites.net/';
+const API = 'https://barberback.azurewebsites.net/api';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);

@@ -4,7 +4,7 @@ import '../assets/css/Login.css';
 import logo from '../assets/images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-const API = 'https://barberback.azurewebsites.net/';
+const API = 'https://barberback.azurewebsites.net/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
